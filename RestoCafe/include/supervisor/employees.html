@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Retro Throwback Cafe</title>
+	<link rel="icon" href="../../assets/logo.png"/>
+	<link rel="stylesheet" href="../../vendor/css/bulma.css">
+	<link rel="stylesheet" href="../../vendor/css/main.css">
+	<script defer src="../../vendor/js/fontawesome.js"></script>
+	<script defer src="../../vendor/js/jquery.js"></script>
+	<script defer src="../../vendor/js/authenticate.js"></script>
+	<script defer src="../../vendor/js/employees.js"></script>
+</head>
+<body>
+	<nav class="navbar is-transparent is-light">
+		<div class="navbar-brand">
+			<a class="navbar-item" href="#!">
+				<img src="../../assets/logo.png" alt="LOGO" width="50">
+			</a>
+			<div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+		</div>
+
+		<div id="navbarExampleTransparentExample" class="navbar-menu">
+			<div class="navbar-start">
+				<a class="navbar-item" href="#!"><span><i class="fa fa-1x fa-users"></i><span>&nbsp; Employees</a>
+					<a class="navbar-item" href="payroll.html"><span><i class="far fa-money-bill-alt"></i><span>&nbsp; Payroll</a>
+						<a class="navbar-item" href="reports.html"><span><i class="fas fa-file-alt"></i><span>&nbsp; Reports</a>
+						</div>
+
+						<div class="navbar-end">
+							<div class="navbar-item">
+								<div class="navbar-item has-dropdown is-hoverable">
+
+									<div class="field is-grouped">
+										<p class="control"><a class="navbar-link" href="#!" id="employee_name"></a></p>
+										<div class="navbar-dropdown is-boxed">
+											<a class="navbar-item" href="account.html">Account</a>
+											<a class="navbar-item" onclick="logout();" href="#!">Logout</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</nav>
+				<main>	
+					<div class="container mt-1">
+						<div class="columns">
+							<div class="column">
+								<h4 class="title font-weight-low"><span><i class="fa fa-1x fa-users"></i><span>&nbsp; Employees</h4>
+									<button class="button default-color-text  primary-bg-clgr"  id="add_toggle_employee"><i class="fas fa-user-plus"></i></button>
+									<table class="table" style="text-transform: capitalize;width: 105%">
+										<thead>
+											<th>Employees ID</th>
+											<th>Employees Firstname</th>
+											<th>Employees Lastname</th>
+											<th>Action</th>
+										</thead>
+										<tbody id="fetch_employees"></tbody>
+									</table>
+								</div>
+								<div class="column" align="center">
+									<div class="mt-2" id="click_logo">
+										<h4 class="title font-weight-low">Click Logo <i class="fas fa-pencil-alt"></i> to Edit Employee</h4>
+										<h4 class="title font-weight-low">Click Logo D to Edit  Deduction</h4>
+									</div>
+									<div class="is-invisible " id="profile_employees" style="margin-left: 15%;">
+										<form id="edit_employee">
+											<h1 class="title">Edit Profile Employee</h1>
+											<div class="columns">
+												<div class="column">
+													<div class="control has-icons-left has-icons-right">
+														<input class="input" name="employee_fname" id="employee_fname" type="text" placeholder="Employee Firstname" title="Fields are Required" required>
+														<span class="icon is-small is-left">
+															<i class="fas fa-user"></i>
+														</span>
+													</div>
+												</div>
+												<div class="column">
+													<div class="control has-icons-left has-icons-right">
+														<input class="input" name="employee_lname" id="employee_lname" type="text" placeholder="Employee Lastname" title="Fields are Required" required>
+														<span class="icon is-small is-left">
+															<i class="fas fa-user"></i>
+														</span>
+													</div>
+												</div>
+											</div>
+											<div class="columns">
+												<div class="column">
+													<div class="select" style="width: 100%">
+														<select name="employee_position" id="employee_position"  required style="width: 150%">
+															<option value="waiter">Waiter</option>
+															<option value="cashier">Cashier</option>
+															<option value="cook">Cook</option>
+															<option value="supervisor">Supervisor</option>
+														</select>
+													</div>
+												</div>
+											</div>
+											<div class="columns">
+												<div class="column">
+													<div class="control has-icons-left has-icons-right">
+														<input class="input" name="employee_bday" id="employee_bday" type="date" onchange="birthdayMoto(this.value);" placeholder="Employee Birthday" title="Fields are Required" required>
+														<span class="icon is-small is-left">
+															<i class="fas fa-user"></i>
+														</span>
+													</div>
+												</div>
+												<div class="column">
+													<div class="control has-icons-left has-icons-right">
+														<input class="input" name="employee_age" id="employee_age" type="text" placeholder="Employee Age" title="Fields are Required" required>
+														<span class="icon is-small is-left">
+															<i class="fas fa-user"></i>
+														</span>
+													</div>
+												</div>
+											</div>
+											<div class="columns">
+												<div class="column">
+													<div class="control has-icons-left has-icons-right">
+														<div class="field">
+															<label class="label">Address</label>
+															<div class="control">
+																<textarea class="input textarea" name="employee_address" id="employee_address" placeholder="Address"></textarea>
+															</div>
+														</div>
+													</div>
+													<input type="hidden"  name="update_button"/>
+													<input type="hidden" value="" name="employee_id"  id="employee_id"/>
+													<div class="field is-grouped mt-br" >
+														<div class="control">
+															<button  class="button is-link primary-bg-clgr">Submit</button>
+														</div>
+													</div>
+												</div>
+											</div>
+										</form>
+									</div>
+									<div class="is-invisible mt-1" id="deduction_profile">
+										<table class="table" style="text-transform: uppercase;">
+											<thead>
+												<th>Deduction Name</th>
+												<th>Deduction Amount</th>
+											</thead>
+											<tbody id="fetch_deduction"></tbody>
+										</table>
+										<div id="change_save" style="display: none">
+											<button class="button primary-bg-clgr default-color-text" onclick="updateDeduction()">Save</button>
+										</div>
+										<div id="change_save2" style="display: none">	
+											<button class="button primary-bg-clgr default-color-text" onclick="addDeduction()">Save</button>
+										</div>
+									</div>	
+								</div>
+							</div>
+							<form id="add_form_employee">
+								<div id="add_modal" class="modal">
+									<div class="modal-background"></div>
+									<div class="modal-card">
+										<header class="modal-card-head">
+											<p class="modal-card-title">Add Employee</p>
+											<button class="close-modal delete" aria-label="close"></button>
+										</header>
+										<section class="modal-card-body">
+											<!-- Content ... -->
+											<div class="columns">
+												<div class="column">
+													<div class="control has-icons-left has-icons-right">
+														<input class="input" name="add_employee_id" id="add_employee_id" type="text" placeholder="Employee ID"  disabled>
+														<span class="icon is-small is-left">
+															<i class="fas fa-user"></i>
+														</span>
+													</div>
+												</div>
+												<div class="column">
+													<div class="select" style="width: 100%">
+														<select name="add_employee_position"  required style="width: 150%">
+															<option value="waiter">Waiter</option>
+															<option value="cashier">Cashier</option>
+															<option value="cook">Cook</option>
+															<option value="supervisor">Supervisor</option>
+														</select>
+													</div>
+												</div>
+											</div>
+											<div class="columns">
+												<div class="column">
+													<div class="control has-icons-left has-icons-right">
+														<input class="input" name="add_employee_fname" id="add_employee_fname" type="text" placeholder="Employee Firstname" title="Fields are Required" required >
+														<span class="icon is-small is-left">
+															<i class="fas fa-user"></i>
+														</span>
+													</div>  
+												</div>
+											</div>
+											<div class="columns">
+												<div class="column">
+													<div class="control has-icons-left has-icons-right">
+														<input class="input" name="add_employee_lname" id="add_employee_lname" type="text" required placeholder="Employee Lastname" title="Fields are Required">
+														<span class="icon is-small is-left">
+															<i class="fas fa-user"></i>
+														</span>
+													</div>  
+												</div>
+											</div>
+											<div class="columns">
+												<div class="column">
+													<div class="control has-icons-left has-icons-right" >
+														<input class="input" name="add_employee_bday" id="add_employee_bday" type="date" onchange="birthdayMoto(this.value);" placeholder="Employee bday" required title="Fields are Required" required>
+														<span class="icon is-small is-left">
+															<i class="fas fa-user"></i>
+														</span>
+													</div>  
+												</div>
+												<div class="column">
+													<div class="control has-icons-left has-icons-right" >
+														<input class="input" name="add_employee_age" id="add_employee_age" type="text" placeholder="Employee Age" >
+														<span class="icon is-small is-left">
+															<i class="fas fa-user"></i>
+														</span>
+													</div>  
+												</div>
+											</div>
+											<div class="columns">
+												<div class="column">
+													<div class="control has-icons-left has-icons-right">
+														<div class="field">
+															<label class="label">Address</label>
+															<div class="control">
+																<textarea class="input textarea" name="add_employee_address" id="add_employee_address" placeholder="Address" required></textarea>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</section>
+										<input type="hidden" name="action" value="add_employee_action" />
+										<footer class="modal-card-foot">
+											<button  class="button primary-bg-clgr default-color-text">Submit</button>
+											<a href="#!" class="close-modal button">Cancel</a>
+										</footer>
+									</div>
+								</div>
+							</form>
+						</main>
+					</body>
+					</html>

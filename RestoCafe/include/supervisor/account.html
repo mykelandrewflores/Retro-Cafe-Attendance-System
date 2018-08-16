@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Retro Throwback Cafe</title>
+	<link rel="icon" href="../../assets/logo.png"/>
+	<link rel="stylesheet" href="../../vendor/css/bulma.css">
+	<link rel="stylesheet" href="../../vendor/css/main.css">
+	<script defer src="../../vendor/js/fontawesome.js"></script>
+	<script defer src="../../vendor/js/jquery.js"></script>
+	<script defer src="../../vendor/js/authenticate.js"></script>
+	<script defer src="../../vendor/js/authenticate.js"></script>
+</head>
+<body>
+	<nav class="navbar is-transparent is-light">
+		<div class="navbar-brand">
+			<a class="navbar-item" href="#!">
+				<img src="../../assets/logo.png" alt="LOGO" width="50">
+			</a>
+			<div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+		</div>
+
+		<div id="navbarExampleTransparentExample" class="navbar-menu">
+			<div class="navbar-start">
+				<a class="navbar-item" href="employees.html"><span><i class="fa fa-1x fa-users"></i><span>&nbsp; Employees</a>
+					<a class="navbar-item" href="payroll.html"><span><i class="far fa-money-bill-alt"></i><span>&nbsp; Payroll</a>
+						<a class="navbar-item" href="reports.html"><span><i class="fas fa-file-alt"></i><span>&nbsp; Reports</a>
+						</div>
+
+						<div class="navbar-end">
+							<div class="navbar-item">
+								<div class="navbar-item has-dropdown is-hoverable">
+
+									<div class="field is-grouped">
+										<p class="control"><a class="navbar-link" href="#!" id="employee_name"></a></p>
+										<div class="navbar-dropdown is-boxed">
+											<a class="navbar-item" href="account.html">Account</a>
+											<a class="navbar-item" onclick="logout();" href="#!">Logout</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</nav>
+				<main>	
+					<div class="container mt-1">
+						<h1 class="title font-weight-low">Account Setting</h1>
+						<div class="columns">
+							<div class="column">
+								<div class="control has-icons-left has-icons-right">
+									<input class="input" name="employee_id" id="employee_id" type="text" placeholder="Employee ID" disabled>
+									<span class="icon is-small is-left">
+										<i class="fas fa-user"></i>
+									</span>
+								</div>
+							</div>
+						</div>
+						<h1 class="subtitle">Change Password</h1>
+						
+							<div class="columns">
+								<div class="column">
+									<div class="control has-icons-left has-icons-right">
+										<input class="input" name="current_pass" id="current_pass" type="password" placeholder="New Pasword" required>
+										<span class="icon is-small is-left">
+											<i class="fas fa-user"></i>
+										</span>
+									</div>
+								</div>
+								<div class="column">
+									<div class="control has-icons-left has-icons-right">
+										<input class="input" name="new_pass" id="new_pass" type="password" placeholder="Input New Pasword" required>
+										<span class="icon is-small is-left">
+											<i class="fas fa-user"></i>
+										</span>
+									</div>
+								</div>
+								<div class="column" style="margin-top: -1.8%">
+									<div class="field is-grouped mt-br" >
+										<div class="control">
+											<button  class="button is-link primary-bg-clgr" onclick="changePassword(current_pass.value,new_pass.value)">Change</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						<h1 class="subtitle">Information</h1>
+						<form id="editInfo">
+							<div class="columns">
+								<div class="column">
+									<div class="control has-icons-left has-icons-right">
+										<input class="input" name="employee_fname" id="employee_fname" type="text" placeholder="Employee Firstname" required>
+										<span class="icon is-small is-left">
+											<i class="fas fa-user"></i>
+										</span>
+									</div>
+								</div>
+								<div class="column">
+									<div class="control has-icons-left has-icons-right">
+										<input class="input" name="employee_lname" id="employee_lname" type="text" placeholder="Employee Lastname" required>
+										<span class="icon is-small is-left">
+											<i class="fas fa-user"></i>
+										</span>
+									</div>
+								</div>
+							</div>
+							<div class="columns">
+								<div class="column">
+									<div class="control has-icons-left has-icons-right">
+										<input class="input" name="employee_bday" id="employee_bday" onchange="birthdayMoto(this.value)" type="date" placeholder="Employee Birthday" required>
+										<span class="icon is-small is-left">
+											<i class="fas fa-user"></i>
+										</span>
+									</div>
+								</div>
+								<div class="column">
+									<div class="control has-icons-left has-icons-right">
+										<input class="input" name="employee_age" id="employee_age" type="text" placeholder="Employee Age" >
+										<span class="icon is-small is-left">
+											<i class="fas fa-user"></i>
+										</span>
+									</div>
+								</div>
+							</div>
+							<div class="columns">
+								<div class="column">
+									<div class="control has-icons-left has-icons-right">
+										<div class="field">
+											<label class="label">Address</label>
+											<div class="control">
+												<textarea class="input textarea" name="employee_address" id="employee_address" placeholder="Address" required></textarea>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<input type="hidden" id="hidden_id" name="employee_id" />
+							<input type="hidden"  name="update_button" />
+							<input type="hidden"  name="employee_position" value="supervisor" />
+							<div class="columns">
+								<div class="column">
+									<div class="field is-grouped mt-br" >
+										<div class="control">
+											<button  class="button is-link primary-bg-clgr">Edit</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</main>
+			</body>
+			</html>

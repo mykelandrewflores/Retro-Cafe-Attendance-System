@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Retro Throwback Cafe</title>
+	<link rel="icon" href="../../assets/logo.png"/>
+	<link rel="stylesheet" href="../../vendor/css/bulma.css">
+	<link rel="stylesheet" href="../../vendor/css/main.css">
+	<script defer src="../../vendor/js/fontawesome.js"></script>
+	<script defer src="../../vendor/js/jquery.js"></script>
+	<script defer src="../../vendor/js/dtr-view.js"></script>
+</head>
+<style type="text/css">
+	.table {
+		width: 100%;
+	}
+</style>
+<body>
+	<main class="mt-1">
+		<div class="container">
+			<div class="has-text-centered">
+				<h4 class="title font-weight-low">DTR of Employee Name</h4>
+			</div>
+			<div class="columns has-text-centered mt-br">
+				<div class="column">
+					<table class="table bordered centered">
+						<thead>
+							<th>Date</th>
+							<th>Time In</th>
+							<th>Time Out</th>
+							<th>Total Hours</th>
+							<th>Over Time</th>
+							<th>Total Income</th>
+						</thead>
+						<tbody id="fetch_timesheet"></tbody>
+					</table>
+					<h5 id="total_payslip" class="right"></h5>
+				</div>
+			</div>
+			<div class="columns">
+				<div class="column">
+					<table class="table centered bordered">
+						<thead>
+							<tr>
+								<th colspan="3"><h4>Taxes</h4></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Philhealth</td>
+								<td id="phil_output">P100.00</td>
+							</tr>
+							<tr>
+								<td>Pag-ibig</td>
+								<td id="pagibig_output">P100.00</td>
+							</tr>
+							<tr>
+								<td>SSS</td>
+								<td id="sss_ouput">P100.00</td>
+							</tr>
+							<tr><td></td><td id="total_tax_output"><b>P300.00</td></tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="column">
+						<table class="table centered">
+							<thead>
+								<tr>
+									<th colspan="3"><h4>Salary</h4></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Total</td>
+									<td id="total_ouput"><b>P300.00</td>
+									</tr>
+									<tr>
+										<td>Tax</td>
+										<td id="total_tax_output2"><b>P300.00</td>
+										</tr>
+										<tr>
+											<td colspan="2"><h5 id="total_salary_output">Total Salary: P300.00</h5></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</main>
+			</body>
+			</html>

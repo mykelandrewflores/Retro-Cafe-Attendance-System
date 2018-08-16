@@ -1,0 +1,77 @@
+* {
+	font-family: 'Roboto';
+}
+body {
+	margin:0;
+	padding:0;
+}
+
+.navbar-item img {
+    max-height: 2.75rem;
+}
+
+.primary-bg-clgr {
+	background: #A55540;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #E79A58, #A55540);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #E79A58, #A55540); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+.secondary-bg-color {
+	background-color: #FF2E63;
+}
+
+.font-weight-low {
+	font-weight: 400;
+}
+.secondary-color-text {
+	color: #A55540;
+}
+.primary-color-text {
+	color:#4B4A5A;
+}
+.default-color-text {
+	color: #E1D5D2;
+}
+
+.third-color-text {
+	color:#A55540;
+}
+
+.mt-br {
+	margin-top: 20px;
+}
+.mt-1 {
+	margin-top: 50px;
+}
+.mt-2 {
+	margin-top: 100px;
+}
+.mt-3 {
+	margin-top: 150px;
+}
+.mt-4 {
+	margin-top: 200px;
+}
+.mt-5 {
+	margin-top: 250px;
+}
+
+.hero-caption {
+	position: absolute;
+	top: 45%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+.input {
+	text-transform: capitalize;
+}
+
+.text-capitalize {
+	text-transform: capitalize;
+}
+
+.input:focus {
+    outline: none !important;
+    border:1px solid #E79A58;
+    box-shadow: 0 0 10px #A55540;
+}

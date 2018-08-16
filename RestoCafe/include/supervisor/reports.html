@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Retro Throwback Cafe</title>
+	<link rel="icon" href="../../assets/logo.png"/>
+	<link rel="stylesheet" href="../../vendor/css/bulma.css">
+	<link rel="stylesheet" href="../../vendor/css/main.css">
+	<link rel="stylesheet" href="../../vendor/css/bulma-calendar.min.css">
+	<script defer src="../../vendor/js/fontawesome.js"></script>
+	<script defer src="../../vendor/js/jquery.js"></script>
+	<script defer src="../../vendor/js/authenticate.js"></script>
+	<script defer src="../../vendor/js/extension.js"></script>
+	<script defer src="../../vendor/js/bulma-calendar.min.js"></script>
+	<script defer src="../../vendor/js/reports.js"></script>
+</head>
+<body>
+	<nav class="navbar is-transparent is-light">
+		<div class="navbar-brand">
+			<a class="navbar-item" href="#!">
+				<img src="../../assets/logo.png" alt="LOGO" width="60" height="100">
+			</a>
+			<div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+		</div>
+
+		<div id="navbarExampleTransparentExample" class="navbar-menu">
+			<div class="navbar-start">
+				<a class="navbar-item" href="employees.html"><span><i class="fa fa-1x fa-users"></i><span>&nbsp; Employees</a>
+					<a class="navbar-item" href="payroll.html"><span><i class="far fa-money-bill-alt"></i><span>&nbsp; Payroll</a>
+						<a class="navbar-item" href="#!"><span><i class="fas fa-file-alt"></i><span>&nbsp; Reports</a>
+						</div>
+						<div class="navbar-end">
+							<div class="navbar-item">
+								<div class="navbar-item has-dropdown is-hoverable">
+									<div class="field is-grouped">
+										<p class="control"><a class="navbar-link" href="#!" id="employee_name"></a></p>
+										<div class="navbar-dropdown is-boxed">
+											<a class="navbar-item" href="account.html">Account</a>
+											<a class="navbar-item"  onclick="logout();" href="#!">Logout</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</nav>
+				<main class="mt-1">
+					<div class="container">	
+						<h1 class="title font-weight-low">Reports</h1>
+						<div class="columns">
+							<div class="column">
+								<div class="control has-icons-left has-icons-right">
+									<input  id="from_date" class="input" type="text" placeholder="From" >
+									<span class="icon is-small is-left">
+										<i class="fas fa-calendar-minus"></i>
+									</span>
+								</div>
+							</div>
+							<div class="column">
+								<div class="control has-icons-left has-icons-right">
+									<input  id="to_date" class="input" type="text" type="text" placeholder="To" >
+									<span class="icon is-small is-left">
+										<i class="fas fa-calendar-plus"></i>
+									</span>
+								</div>
+							</div>
+							<div class="column">
+								<button class="button is-info primary-bg-clgr" onclick="filterData(from_date.value,to_date.value)">Filter</button>
+							</div>
+						</div>
+						<div class="columns">
+							<div class="column">
+								<table class="table text-capitalize" style="width: 100%">
+									<thead>
+										<th>Payroll ID</th>
+										<th>Payroll Date</th>
+										<th>Employee ID</th>
+										<th>Employee Name</th>
+										<th>Employee Position</th>
+										<th>Total Salary</th>
+										<th>Action</th>
+									</thead>
+									<tbody id="fetch_reports_data"></tbody>
+								</table>
+							</div>
+						</div>
+						<div class="columns" align="right">
+							<div class="column">
+								<h1 class="title font-weight-low">Total: P<span id="total_output"> 0.00</span></h1>
+							</div>
+							<div class="column">
+								<button class="button is-info primary-bg-clgr" onclick="printReport()"><i class="fas fa-print"></i>&nbsp;Print</button>
+							</div>
+						</div>
+					</div>
+				</main>
+				<div id="view_modal" class="modal">
+					<div class="modal-background"></div>
+					<div class="modal-card">
+						<header class="modal-card-head">
+							<p class="modal-card-title">Summary Payroll Report</p>
+							<button class="close-modal delete" aria-label="close"></button>
+						</header>
+						<section class="modal-card-body">
+							<!-- Content ... -->
+							<div class="columns">
+								<div class="column">
+									<div class="control has-icons-left has-icons-right">
+										<input  id="employee_fname" class="input" type="text" placeholder="Employee Name" disabled >
+										<span class="icon is-small is-left">
+											<i class="fas fa-user"></i>
+										</span>
+									</div>
+								</div>
+								<div class="column">
+									<div class="control has-icons-left has-icons-right">
+										<input  id="employee_position" class="input" type="text" placeholder="Employee Position" disabled>
+										<span class="icon is-small is-left">
+											<i class="fas fa-user"></i>
+										</span>
+									</div>
+								</div>
+							</div>
+							<h1 class="subtitle font-weight-low"><b>Daily Time Record</b></h1>
+							<div class="columns">
+								<div class="column">
+									<table class="table" style="width:100%">
+										<thead>
+											<th>Date</th>
+											<th>Hours</th>
+											<th>OT</th>
+											<th>Hours</th>
+										</thead>
+										<tbody id="fetch_dtr">
+											<tr><td></td><td></td><td></td><td><b>Total Hours</b>:</td><td> 8</td></tr>
+											<tr><td></td><td></td><td></td><td><b>Total</b>:</td><td> P 376.00</td></tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div class="columns">
+								<div class="column">
+									<h1 class="subtitle"><b>Deduction</b></h1>
+									<table class="table">
+										<tbody id="employee_deduction">
+										</tbody>
+									</table>
+								</div>
+								<div class="column">
+									<h1 class="subtitle"><b>Salary</b></h1>
+									<table class="table">
+										<tbody>
+											<tr><td>Total</td><td id="total_money_hours">P 0.00</td></tr>
+											<tr><td>Total Deduction</td><td id="total_deduction">P 0.00</td></tr>
+											<tr><td><b>Total Salary</td><td id="total_salary"><b>P 0.00</td></tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div class="columns">
+								<div class="column">
+									<h1 class="subtitle"><b>Pay Date</b>: <span id="pay_check"></span></h1>
+								</div>
+							</div>
+						</section>
+						<input type="hidden" name="action" value="add_employee_action" />
+						<footer class="modal-card-foot">
+							<a href="#!" class="close-modal button">OK</a>
+						</footer>
+					</div>
+				</div>
+			</body>
+			<script>
+				document.addEventListener( 'DOMContentLoaded', function () {
+					var datePicker = new bulmaCalendar( document.getElementById( 'from_date' ), {
+						    startDate: new Date(), // Date selected by default
+						    dateFormat: 'yyyy-mm-dd', // the date format `field` value
+						    lang: 'en', // internationalization
+						    overlay: false,
+						    closeOnOverlayClick: true,
+						    closeOnSelect: true,
+						    // callback functions
+						    onSelect: null,
+						    onOpen: null,
+						    onClose: null,
+						    onRender: null
+						} );
+					var datePicker = new bulmaCalendar( document.getElementById( 'to_date' ), {
+						startDate: new Date(), // Date selected by default
+						    dateFormat: 'yyyy-mm-dd', // the date format `field` value
+						    lang: 'en', // internationalization
+						    overlay: false,
+						    closeOnOverlayClick: true,
+						    closeOnSelect: true,
+						    // callback functions
+						    onSelect: null,
+						    onOpen: null,
+						    onClose: null,
+						    onRender: null
+						} );
+				} );
+			</script>
+			</html>

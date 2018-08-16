@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Retro Throwback Cafe</title>
+	<link rel="icon" href="../../assets/logo.png"/>
+	<link rel="stylesheet" href="../../vendor/css/bulma.css">
+	<link rel="stylesheet" href="../../vendor/css/main.css">
+	<script defer src="../../vendor/js/fontawesome.js"></script>
+	<script defer src="../../vendor/js/jquery.js"></script>
+	<script defer src="../../vendor/js/login.js"></script>
+</head>
+<style type="text/css">
+.hero {
+	background-image: url('../../assets/cover.jpeg');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	height: 100vh;
+	position: relative;
+}
+
+.input {
+	text-transform: none;
+}
+.hero-dusk::before {
+	content: "";
+	display: block;
+	position: absolute;
+	height: 100vh;
+	width: 100vw;
+	top: 0;
+	left: 0;
+	background-image: -webkit-linear-gradient(left top, rgba(48,67,82,0.4), rgba(215,210,204,0.4));
+}
+</style>
+<body>
+	<main>
+		<div class="hero hero-dusk">
+			<div class="container mt-5"  align="center">
+				<div class="columns has-text-centered">
+					<div class="column" >
+						<div class="box  hero-caption" style="padding: 1.5rem"  id="box1">
+							<img src="../../assets/logo.png" width="200">
+							<form id="login_form">
+								<div class="field mt-br">
+									<div class="control has-icons-left has-icons-right">
+										<input class="input" name="employee_id" id="employee_id" type="text" placeholder="Employee ID" title="Fields are Required" required>
+										<span class="icon is-small is-left">
+											<i class="fas fa-user"></i>
+										</span>
+									</div>
+								</div>
+								<div class="field mt-br">
+									<div class="control has-icons-left has-icons-right">
+										<input class="input" name="employee_password" id="employee_password" type="password" placeholder="Employee Password" title="Fields are Required" required>
+										<span class="icon is-small is-left">
+											<i class="fas fa-user"></i>
+										</span>
+									</div>
+								</div>
+								<div class="field is-grouped mt-br" style="transform: translate(35%, -10%);">
+									<div class="control">
+										<button class="button is-link default-color-text primary-bg-clgr" >Submit</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+</body>
+</html>
